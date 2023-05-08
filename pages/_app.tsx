@@ -6,7 +6,6 @@ import {
   QueryClientProvider
 } from '@tanstack/react-query';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import '@/styles/globals.css';
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -16,7 +15,6 @@ export default function App({ Component, pageProps }: AppProps) {
       <Hydrate state={pageProps.dehydratedState}>
         <Navbar />
         <Component {...pageProps} />
-        <Footer />
       </Hydrate>
     </QueryClientProvider>
   );

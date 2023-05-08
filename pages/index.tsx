@@ -4,6 +4,7 @@ import Listings from '@/components/Listings';
 import { NextPage } from 'next';
 import { QueryClient, dehydrate, useQuery } from '@tanstack/react-query';
 import Wrapper from '@/components/Wrapper';
+import CompanyInfo from '@/components/CompanyInfo';
 import { ListingsData } from '@/types';
 import { getListingsData } from '@/utils/queries';
 
@@ -29,6 +30,7 @@ const Home: NextPage = () => {
           <Listings listings={data} />
         )}
       </Wrapper>
+      <CompanyInfo />
     </>
   );
 };
