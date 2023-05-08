@@ -5,7 +5,9 @@ import Link from 'next/link';
 import React from 'react';
 
 const ListingCard = ({ listing }: { listing: Listing }) => {
+  //combine the street, city, province and postal code into single string
   const address: string = parseAddress(listing.attributes.address);
+
   const {
     attributes: { type, beds, baths, areaSQFT, description, photos }
   } = listing;

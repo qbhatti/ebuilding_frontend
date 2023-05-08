@@ -7,14 +7,20 @@ import {
 } from '@tanstack/react-query';
 import Navbar from '@/components/Navbar';
 import '@/styles/globals.css';
+import { UserProvider, useFetchUser } from '@/utils/authContext';
 
 export default function App({ Component, pageProps }: AppProps) {
   const queryClient = React.useRef(new QueryClient());
+
+  const { user } = useFetchUser();
+
   return (
     <QueryClientProvider client={queryClient.current}>
       <Hydrate state={pageProps.dehydratedState}>
-        <Navbar />
-        <Component {...pageProps} />
+        <UserProvider value={{ user }}>
+          <Navbar />
+          <Component {...pageProps} />
+        </UserProvider>
       </Hydrate>
     </QueryClientProvider>
   );

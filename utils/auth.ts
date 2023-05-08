@@ -26,24 +26,25 @@ export const unsetToken = () => {
   Cookies.remove('id');
   Cookies.remove('jwt');
   Cookies.remove('email');
+  Cookies.remove('username');
 };
 
-export const getUserFromLocalCookie = () => {
+export const getUserFromLocalCookie = async () => {
   const jwt = getTokenFromLocalCookie();
 
   if (jwt) {
-    axios(`${process.env.STRAPI_URL}/api/users/me`, {
-      headers: {
-        Authorization: `Bearer ${jwt}`
-      }
-    })
-      .then((res) => {
-        return res.data.username;
-      })
-      .catch((err) => {
-        console.log(err);
-        return null;
+    try {
+      const res = await axios(`${process.env.STRAPI_URL}/api/users/me`, {
+        headers: {
+          Authorization: `Bearer ${jwt}`
+        }
       });
+
+      console.log(res.data);
+      return res.data.username;
+    } catch (error) {
+      console.log(error);
+    }
   }
   return null;
 };

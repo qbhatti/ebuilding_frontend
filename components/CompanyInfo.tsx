@@ -1,7 +1,7 @@
 import React from 'react';
 import Wrapper from './Wrapper';
 
-const Footer = () => {
+const CompanyInfo = () => {
   return (
     <div className='w-full bg-teal-100 h-[100px] mt-10 border-t-2  relative bottom-0 left-0 right-0 mb-0'>
       <Wrapper>
@@ -24,4 +24,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default CompanyInfo;

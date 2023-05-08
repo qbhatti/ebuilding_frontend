@@ -1,6 +1,5 @@
 import React from 'react';
 import ListingCard from './ListingCard';
-import Wrapper from './Wrapper';
 import { ListingsData } from '@/types';
 
 const Listings = ({ listings }: { listings: ListingsData }) => {

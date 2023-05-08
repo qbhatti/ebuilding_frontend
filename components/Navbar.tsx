@@ -1,30 +1,17 @@
-import { unsetToken } from '@/utils/auth';
-import Cookies from 'js-cookie';
+import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { unsetToken } from '@/utils/auth';
+import { useUser } from '@/utils/authContext';
 
 const Navbar = () => {
-  const [currentUser, setCurrentUser] = useState<string | null | undefined>(
-    null
-  );
-
   const router = useRouter();
 
-  useEffect(() => {
-    const username = Cookies.get('username');
-    setCurrentUser(username);
-
-    console.log(currentUser);
-    return () => {
-      setCurrentUser(null);
-    };
-  }, []);
+  const { user } = useUser();
 
   const handleLogout = () => {
     unsetToken();
-    setCurrentUser(null);
-    router.push('/');
+    router.reload();
   };
 
   return (
@@ -57,9 +44,9 @@ const Navbar = () => {
           </Link>
         </div>
       </div>
-      {!!currentUser ? (
+      {!!user ? (
         <div className='flex flex-row '>
-          <p className='text-white mx-2 mt-1'> Welcome, {currentUser}</p>
+          <p className='text-white mx-2 mt-1'> Welcome, {user}</p>
 
           <button
             className='inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-0'

@@ -40,6 +40,7 @@ export default Home;
 export const getServerSideProps = async () => {
   const queryClient = new QueryClient();
 
+  //pre-fetch the listings data to populate the homepage on serve-side
   await queryClient.prefetchQuery<ListingsData>(['listings'], getListingsData);
 
   return {
