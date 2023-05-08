@@ -9,7 +9,15 @@ const ListingCard = ({ listing }: { listing: Listing }) => {
   const address: string = parseAddress(listing.attributes.address);
 
   const {
-    attributes: { type, beds, baths, areaSQFT, description, photos }
+    attributes: {
+      type,
+      beds,
+      baths,
+      areaSQFT,
+      description,
+      photos,
+      askingPrice
+    }
   } = listing;
 
   return (
@@ -38,7 +46,9 @@ const ListingCard = ({ listing }: { listing: Listing }) => {
             <p className='inline-block mr-3'>{`${baths} bath${
               baths > 1 ? 's' : ''
             }`}</p>
-            <p className='inline-block'>{`${areaSQFT} sqft`}</p>
+            <p className='inline-block mr-3'>{`${areaSQFT} sqft`}</p>
+
+            <p className='inline-block mr-3'>{`$${askingPrice.toLocaleString()}`}</p>
           </div>
         </div>
       </div>
