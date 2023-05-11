@@ -2,11 +2,18 @@ import Wrapper from '@/components/Wrapper';
 import { setToken } from '@/utils/auth';
 import { useUser } from '@/utils/authContext';
 import axios from 'axios';
+import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 
-const Signup = () => {
-  const [formData, setformData] = useState({
+type SignupData = {
+  username: string;
+  email: string;
+  password: string;
+};
+
+const Signup: NextPage = () => {
+  const [formData, setformData] = useState<SignupData>({
     username: '',
     email: '',
     password: ''

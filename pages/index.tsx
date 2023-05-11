@@ -37,6 +37,7 @@ const Home: NextPage = () => {
 
 export default Home;
 
+// can use getStaticProps if data doesn't change frequently
 export const getServerSideProps = async () => {
   const queryClient = new QueryClient();
 

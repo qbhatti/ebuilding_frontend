@@ -11,17 +11,16 @@ interface UserCtx {
   user: string | null;
 }
 
+interface UserProviderProps {
+  value: UserCtx;
+  children: ReactNode;
+}
+
 let userState: string | null;
 
 const User = createContext<UserCtx>({ user: null });
 
-export const UserProvider = ({
-  value,
-  children
-}: {
-  value: UserCtx;
-  children: ReactNode;
-}) => {
+export const UserProvider = ({ value, children }: UserProviderProps) => {
   const { user } = value;
 
   useEffect(() => {
@@ -36,7 +35,7 @@ export const UserProvider = ({
 export const useUser = () => useContext(User);
 
 export const useFetchUser = () => {
-  const [data, setUser] = useState({
+  const [data, setUser] = useState<UserCtx>({
     user: userState
   });
 
@@ -53,7 +52,6 @@ export const useFetchUser = () => {
       }
     };
     resolveUser();
-    console.log(data);
 
     return () => {
       isMounted = false;

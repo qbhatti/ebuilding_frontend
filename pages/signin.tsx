@@ -3,12 +3,18 @@ import { getUserFromLocalCookie, setToken } from '@/utils/auth';
 import { useUser } from '@/utils/authContext';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
-const Signin = () => {
-  const [formData, setformData] = useState({
+type SigninData = {
+  identifier: string;
+  password: string;
+};
+
+const Signin: NextPage = () => {
+  const [formData, setformData] = useState<SigninData>({
     identifier: '',
     password: ''
   });
@@ -16,8 +22,6 @@ const Signin = () => {
   const router = useRouter();
 
   const { user } = useUser();
-
-  useEffect;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setformData({

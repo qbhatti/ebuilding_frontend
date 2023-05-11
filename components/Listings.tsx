@@ -2,7 +2,11 @@ import React from 'react';
 import ListingCard from './ListingCard';
 import { ListingsData } from '@/types';
 
-const Listings = ({ listings }: { listings: ListingsData }) => {
+type ListingsProps = {
+  listings: ListingsData;
+};
+
+const Listings = ({ listings }: ListingsProps) => {
   return (
     <>
       <div className='text-2xl font-semibold mt-6 mb-1 '>

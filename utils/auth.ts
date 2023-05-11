@@ -29,7 +29,7 @@ export const unsetToken = () => {
   Cookies.remove('username');
 };
 
-export const getUserFromLocalCookie = async () => {
+export const getUserFromLocalCookie = async (): Promise<string | null> => {
   const jwt = getTokenFromLocalCookie();
 
   if (jwt) {
@@ -39,8 +39,6 @@ export const getUserFromLocalCookie = async () => {
           Authorization: `Bearer ${jwt}`
         }
       });
-
-      console.log(res.data);
       return res.data.username;
     } catch (error) {
       console.log(error);

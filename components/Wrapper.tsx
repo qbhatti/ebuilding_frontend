@@ -1,6 +1,10 @@
 import React, { ReactNode } from 'react';
 
-const Wrapper = ({ children }: { children?: ReactNode }) => {
+type WrapperProps = {
+  children?: ReactNode;
+};
+
+const Wrapper = ({ children }: WrapperProps) => {
   return <div className='max-w-[800px] m-auto'>{children}</div>;
 };
 
